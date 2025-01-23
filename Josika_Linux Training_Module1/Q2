@@ -1,0 +1,8 @@
+2) Create a file and remove write permission for group user alone.
+
+ubuntu@ubuntu:~/eUR$ touch file2.txt
+ubuntu@ubuntu:~/eUR$ ls -l file2.txt
+-rw-rw-r-- 1 ubuntu ubuntu 0 Jan 23 05:03 file2.txt
+ubuntu@ubuntu:~/eUR$ chmod g-w file2.txt
+ubuntu@ubuntu:~/eUR$ ls -l file2.txt
+-rw-r--r-- 1 ubuntu ubuntu 0 Jan 23 05:03 file2.txt
