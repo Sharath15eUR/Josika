@@ -1,0 +1,48 @@
+4) Use ps command with options to display all active process running on the system
+
+ubuntu@ubuntu:~/eUR$ ps aux
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.6  23356 13744 ?        Ss   05:09   0:02 /sbin/init --
+root           2  0.0  0.0      0     0 ?        S    05:09   0:00 [kthreadd]
+root           3  0.0  0.0      0     0 ?        S    05:09   0:00 [pool_workque
+root           4  0.0  0.0      0     0 ?        I<   05:09   0:00 [kworker/R-rc
+root           5  0.0  0.0      0     0 ?        I<   05:09   0:00 [kworker/R-rc
+root           6  0.0  0.0      0     0 ?        I<   05:09   0:00 [kworker/R-sl
+root           7  0.0  0.0      0     0 ?        I<   05:09   0:00 [kworker/R-ne
+
+ubuntu@ubuntu:~/eUR$ ps -e
+    PID TTY          TIME CMD
+      1 ?        00:00:02 systemd
+      2 ?        00:00:00 kthreadd
+      3 ?        00:00:00 pool_workqueue_release
+      4 ?        00:00:00 kworker/R-rcu_g
+      5 ?        00:00:00 kworker/R-rcu_p
+      6 ?        00:00:00 kworker/R-slub_
+      7 ?        00:00:00 kworker/R-netns
+      9 ?        00:00:26 kworker/0:1-events
+     10 ?        00:00:00 kworker/0:0H-events_highpri
+
+ubuntu@ubuntu:~/eUR$ ps -ef
+UID          PID    PPID  C STIME TTY          TIME CMD
+root           1       0  0 05:09 ?        00:00:02 /sbin/init --- splash
+root           2       0  0 05:09 ?        00:00:00 [kthreadd]
+root           3       2  0 05:09 ?        00:00:00 [pool_workqueue_release]
+root           4       2  0 05:09 ?        00:00:00 [kworker/R-rcu_g]
+root           5       2  0 05:09 ?        00:00:00 [kworker/R-rcu_p]
+root           6       2  0 05:09 ?        00:00:00 [kworker/R-slub_]
+root           7       2  0 05:09 ?        00:00:00 [kworker/R-netns]
+root           9       2  0 05:09 ?        00:00:26 [kworker/0:1-events]
+root          10       2  0 05:09 ?        00:00:00 [kworker/0:0H-events_highpri
+
+ubuntu@ubuntu:~/eUR$ ps -aux --sort=-%cpu
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+ubuntu      4512 40.0  0.2  24076  5376 pts/0    R+   06:20   0:00 ps -aux --sor
+ubuntu      2120  1.1 18.2 3479192 368576 ?      Ssl  05:10   0:47 /usr/bin/gnom
+ubuntu      1911  0.8  5.0 383204 102024 tty2    Sl+  05:10   0:35 /usr/lib/xorg
+root           9  0.6  0.0      0     0 ?        I    05:09   0:26 [kworker/0:1-
+root        4313  0.2  0.0      0     0 ?        I    06:00   0:02 [kworker/u2:2
+root        3234  0.1  0.0      0     0 ?        I<   05:12   0:07 [kworker/0:2H
+root        3232  0.1  3.2 631528 65976 ?        Sl   05:12   0:06 /snap/ubuntu-
+root        4179  0.1  7.3 673016 147608 ?       Ssl  05:43   0:03 /usr/libexec/
+root        1525  0.1  1.1 1843720 23924 ?       Ssl  05:10   0:05 /usr/lib/snap
+root        4418  0.1  0.0      0     0 ?        I    06:00   0:01 [kworker/u2:3
