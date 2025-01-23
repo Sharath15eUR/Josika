@@ -1,0 +1,12 @@
+1) Create a file and add executable permission to all users (user, group and others)
+
+ubuntu@ubuntu:~$ mkdir eUR
+ubuntu@ubuntu:~$ cd eUR
+ubuntu@ubuntu:~/eUR$ vi file1.txt
+ubuntu@ubuntu:~/eUR$ cat file1.txt
+This is a sample testing file
+ubuntu@ubuntu:~/eUR$ ls -l file1.txt
+-rw-rw-r-- 1 ubuntu ubuntu 30 Jan 23 05:01 file1.txt
+ubuntu@ubuntu:~/eUR$ chmod a+x file1.txt
+ubuntu@ubuntu:~/eUR$ ls -l file1.txt
+-rwxrwxr-x 1 ubuntu ubuntu 30 Jan 23 05:01 file1.txt
