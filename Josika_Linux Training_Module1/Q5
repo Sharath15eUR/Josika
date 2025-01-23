@@ -1,0 +1,19 @@
+5) Create 3 files in a dir1 and re-direct the output of list command with sorted by timestamp of the files to a file
+
+ubuntu@ubuntu:~/eUR$ touch dir1/f1.txt f2.txt f3.txt
+ubuntu@ubuntu:~/eUR$ ls
+dir1  f2.txt  f3.txt  file1.txt  file2.txt
+ubuntu@ubuntu:~/eUR$ ls -lt dir1 > dir1/file_list.txt
+ubuntu@ubuntu:~/eUR$ ls
+dir1  f2.txt  f3.txt  file1.txt  file2.txt
+ubuntu@ubuntu:~/eUR$ cd dir1
+ubuntu@ubuntu:~/eUR/dir1$ ls
+dir2  f1.txt  f2.txt  f3.txt  file3_link.txt  file_list.txt
+ubuntu@ubuntu:~/eUR/dir1$ cat file_list.txt
+total 0
+-rw-rw-r-- 1 ubuntu ubuntu  0 Jan 23 06:23 file_list.txt
+-rw-rw-r-- 1 ubuntu ubuntu  0 Jan 23 06:23 f1.txt
+-rw-rw-r-- 1 ubuntu ubuntu  0 Jan 23 06:22 f2.txt
+-rw-rw-r-- 1 ubuntu ubuntu  0 Jan 23 06:22 f3.txt
+lrwxrwxrwx 1 ubuntu ubuntu 19 Jan 23 05:10 file3_link.txt -> dir1/dir2/file3.txt
+drwxrwxr-x 2 ubuntu ubuntu 60 Jan 23 05:10 dir2
