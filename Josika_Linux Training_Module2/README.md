@@ -1,4 +1,4 @@
-![3](https://github.com/user-attachments/assets/b9b5e361-055e-4c35-b0ce-c32eb71a06e5)# System Administration Tasks
+# System Administration Tasks
 
 ## Overview
 This repository contains a set of system administration tasks that involve file management, process monitoring, networking, and text processing. The tasks are designed to help automate common Linux system operations and make the process more efficient.
