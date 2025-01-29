@@ -1,0 +1,6 @@
+5) Use the networking tool command and print all the gateway available in a sorted manner.
+
+osboxes@osboxes:~$ ip route | grep default |sort
+default via 10.0.2.2 dev eth2  proto static
+osboxes@osboxes:~$ ip route | grep default |awk '{print $3}'| sort -u
+10.0.2.2
