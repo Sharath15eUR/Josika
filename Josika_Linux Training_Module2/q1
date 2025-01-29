@@ -1,0 +1,8 @@
+1) Use the appropriate command to list all files larger than 1 MB in the current directory and save the output to a file.
+
+osboxes@osboxes:~/eUR/mod2$ head -c 2M </dev/urandom >largefile
+osboxes@osboxes:~/eUR/mod2$ du -h largefile
+2.0M  largefile
+osboxes@osboxes:~/eUR/mod2$ find . -type f -size +1M > output1.txt
+osboxes@osboxes:~/eUR/mod2$ cat output1.txt
+./largefile
