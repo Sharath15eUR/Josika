@@ -68,7 +68,7 @@ kill -9 <PID>
 ![4-part1](https://github.com/user-attachments/assets/f81d1434-c01c-4d71-a2db-85cd2776ff53)
 ![4-part2](https://github.com/user-attachments/assets/3982b2e4-11ca-4734-a614-f1c87dcb5d74)
 
-### **5. List All Available Gateways Sorted **
+### **5. List All Available Gateways Sorted**
 
 #### i) To list all available gateways and display them in a sorted manner
 ```bash
