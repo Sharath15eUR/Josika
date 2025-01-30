@@ -1,0 +1,46 @@
+# To know path of source directory
+
+[21bcs010@mepcolinux ~]$ls
+1yr  2yr  3yr  4yr  config.txt  dir1  itt  log.txt  mod2full.txt
+[21bcs010@mepcolinux ~]$cd 1yr
+[21bcs010@mepcolinux 1yr]$ls
+sem1  sem2
+[21bcs010@mepcolinux 1yr]$cd sem1
+[21bcs010@mepcolinux sem1]$ls
+c
+[21bcs010@mepcolinux sem1]$cd c
+[21bcs010@mepcolinux c]$ls
+ex10  ex4  ex5  ex6  ex7  ex7a  ex7new  ex8  ex8a  ex8new  ex9  strsearch
+[21bcs010@mepcolinux c]$cd ex10
+[21bcs010@mepcolinux ex10]$ls
+ex10.prn  res.txt  r.txt  textfile.c  textfile.txt
+
+# To create a dest directory
+
+[21bcs010@mepcolinux ~]$mkdir eUR
+[21bcs010@mepcolinux ~]$ls
+1yr  2yr  3yr  4yr  config.txt  dir1  eUR  itt  log.txt  mod2full.txt
+
+# Script and enabling execution permission
+
+[21bcs010@mepcolinux ~]$vi backup_manager.sh
+[21bcs010@mepcolinux ~]$ls -l backup_manager.sh
+-rw-r--r--. 1 21bcs010 cse-ug-2021a 2201 Jan 30 12:05 backup_manager.sh
+[21bcs010@mepcolinux ~]$chmod +x backup_manager.sh
+[21bcs010@mepcolinux ~]$ls -l backup_manager.sh
+-rwxr-xr-x. 1 21bcs010 cse-ug-2021a 2201 Jan 30 12:05 backup_manager.sh
+
+# Purpose served
+[21bcs010@mepcolinux ~]$./backup_manager.sh "1yr/sem1/c/ex10" "eUR" ".txt"
+Files to be backed up:
+res.txt - 60 bytes
+r.txt - 117 bytes
+textfile.txt - 59 bytes
+Starting backup...
+Backup completed. Report saved at eUR/backup_report.log.
+
+[21bcs010@mepcolinux ~]$cat eUR/backup_report.log
+Backup Summary:
+Total files processed: 3
+Total size of files backed up: 236 bytes
+Backup directory: eUR
