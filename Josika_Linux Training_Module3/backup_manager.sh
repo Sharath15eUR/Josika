@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # check if three arguments are provided
 if [ "$#" -ne 3 ]; then
     echo "Usage: $0 \"source_directory\" \"backup_directory\" \"file_extension\""
