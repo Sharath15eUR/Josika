@@ -1,8 +1,10 @@
 # Extract WLAN Frame Data from provided input file
+## Introduction
+This script extracts specific WLAN frame data (frame time, frame type, and frame subtype) from a given input file and formats it into a readable output.
 
 ## Execution
 
-### i)extract.sh
+### 1)extract.sh
 ```bash
 #!/bin/bash
 # Checking if the input file is provided
@@ -47,15 +49,15 @@ while IFS= read -r line; do
 done < "$input"
 echo "Output saved to $output"
 ```
-### ii)Give the script execution permission using:
+### 2)Give the script execution permission using:
 ```bash
 chmod +x extract.sh
 ```
-### iii) Script execution with input file as arg:
+### 3) Script execution with input file as arg:
 ```bash
 ./extract.sh input.txt
 ```
-### iv) Output:
+### 4) Output:
 ```
 "frame.time": "Dec 31 2024 12:50:25.890970000 India Standard Time"
 "wlan.fc.type": "0"
@@ -66,7 +68,7 @@ chmod +x extract.sh
 "wlan.fc.subtype": "8"
 
 ```
-### iv) Screenshot:
+### 5) Screenshot:
 ![image](https://github.com/user-attachments/assets/92e0f172-36d4-48d9-8f5f-85b22f19e9cf)
 
 
