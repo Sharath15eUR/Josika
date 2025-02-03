@@ -27,17 +27,17 @@ wlan_sub_type=""
 while IFS= read -r line; do
     case "$line" in
         *"frame.time"*)
-            [[ "$line" != *"frame.time_"* ]] && frame_time=$(echo "$line" | cut -d':' -f2- | xargs)
+            [[ "$line" != *"frame.time_"* ]] && frame_time=$(echo "$line" | cut -d':' -f2- | xargs | sed 's/,$//')
             ;;
         *"wlan.fc.type"*)
-            [[ "$line" != *"wlan.fc.type_"* ]] && wlan_type=$(echo "$line" | cut -d':' -f2- | xargs)
+            [[ "$line" != *"wlan.fc.type_"* ]] && wlan_type=$(echo "$line" | cut -d':' -f2- | xargs | sed 's/,$//')
             ;;
         *"wlan.fc.subtype"*)
-            [[ "$line" != *"wlan.fc.subtype_"* ]] && wlan_sub_type=$(echo "$line" | cut -d':' -f2- | xargs)
+            [[ "$line" != *"wlan.fc.subtype_"* ]] && wlan_sub_type=$(echo "$line" | cut -d':' -f2- | xargs | sed 's/,$//')
             ;;
     esac
 
-    # If all values are found, write to output with proper formatting and reset
+    # If all values are found, write to output and reset
     if [[ -n "$frame_time" && -n "$wlan_type" && -n "$wlan_sub_type" ]]; then
         echo "\"frame.time\": \"$frame_time\"," >> "$output"
         echo "\"wlan.fc.type\": \"$wlan_type\"," >> "$output"
@@ -45,6 +45,7 @@ while IFS= read -r line; do
         echo "" >> "$output"  # Add a blank line for readability
         frame_time=""; wlan_type=""; wlan_sub_type=""
     fi
+
 done < "$input"
 
 echo "Output saved to $output"
