@@ -1,109 +1,99 @@
 #!/bin/bash
-
-# Initialize variables
-directory=""
-keyword=""
-file=""
-help=""
-
-# Recursive function to search for files containing the keyword
-search_files() {
-    local dir="$1"
-    local keyword="$2"
-    
+# Log errors to errors.log and display them in the terminal
+log_error() {
+    echo "$1" | tee -a errors.log >&2
+}
+# Display help menu using a here document
+show_help() {
+    cat << EOF
+Usage: $0 [OPTIONS]
+Options:
+  -d <directory>  Directory to search.
+  -k <keyword>    Keyword to search.
+  -f <file>       File to search directly.
+  --help          Display this help menu.
+Example usage:
+# Recursively search a directory for a keyword
+./file_analyzer.sh -d logs -k error
+# Search for a keyword in a file
+./file_analyzer.sh -f script.sh -k TODO
+# Display the help menu
+./file_analyzer.sh --help
+EOF
+}
+# Recursive function to search for files containing a keyword
+search_directory() {
+    local dir=$1
+    local keyword=$2
     for file in "$dir"/*; do
         if [ -d "$file" ]; then
-            search_files "$file" "$keyword"  # Recursive call for subdirectories
+            search_directory "$file" "$keyword"
         elif [ -f "$file" ]; then
             if grep -q "$keyword" "$file"; then
-                echo "Found '$keyword' in $file"
+                echo "Keyword '$keyword' found in: $file"
             fi
         fi
     done
 }
-
-# Show help menu using here document
-show_help() {
-    cat <<EOF
-Usage: ./file_analyzer.sh [options]
-Options:
-  -d <directory>   Directory to search for files (recursive)
-  -k <keyword>     Keyword to search for
-  -f <file>        Search for a keyword in a specific file
-  --help           Display this help message
-EOF
-}
-
-# Validate that the keyword and file inputs are valid using regular expressions
+# Validate inputs with regular expressions
 validate_inputs() {
-    if [[ ! "$keyword" =~ ^[a-zA-Z0-9_]+$ ]]; then
-        echo "Error: Keyword must be alphanumeric and cannot contain spaces or special characters."
+    if [ ! -e "$1" ]; then
+        log_error "Error: File or directory '$1' does not exist."
         exit 1
     fi
-
-    if [ ! -z "$file" ] && [ ! -f "$file" ]; then
-        echo "Error: File '$file' does not exist."
-        exit 1
-    fi
-
-    if [ -z "$directory" ] && [ -z "$file" ]; then
-        echo "Error: Must specify either a directory (-d) or a file (-f)."
+    if [[ -z "$2" || ! "$2" =~ ^[A-Za-z0-9_]+$ ]]; then
+        log_error "Error: Invalid keyword '$2'."
         exit 1
     fi
 }
-
-# Handle command-line arguments using getopts
-while getopts ":d:k:f:" opt; do
-    case "$opt" in
-        d) directory="$OPTARG" ;;
-        k) keyword="$OPTARG" ;;
-        f) file="$OPTARG" ;;
-        \?) echo "Usage: $0 [-d directory] [-k keyword] [-f file]" >&2; exit 1 ;;
+# Parse command-line arguments using getopts
+while getopts "d:k:f:-:" opt; do
+    case $opt in
+        d)
+            directory=$OPTARG
+            ;;
+        k)
+            keyword=$OPTARG
+            ;;
+        f)
+            file=$OPTARG
+            ;;
+        -)
+            case $OPTARG in
+                help)
+                    show_help
+                    exit 0
+                    ;;
+                *)
+                    log_error "Error: Invalid option '--$OPTARG'."
+                    exit 1
+                    ;;
+            esac
+            ;;
+        \?)
+            log_error "Error: Invalid option '-$OPTARG'."
+            exit 1
+            ;;
+        :)
+            log_error "Error: Option '-$OPTARG' requires an argument."
+            exit 1
+            ;;
     esac
 done
-
-# Handle '--help' argument
-if [[ "$1" == "--help" ]]; then
+# Handle provided options
+if [ -n "$directory" ] && [ -n "$keyword" ]; then
+    validate_inputs "$directory" "$keyword"
+    search_directory "$directory" "$keyword"
+elif [ -n "$file" ] && [ -n "$keyword" ]; then
+    validate_inputs "$file" "$keyword"
+    if grep -q "$keyword" <<< $(cat "$file"); then
+        echo "Keyword '$keyword' found in: $file"
+    else
+        echo "Keyword '$keyword' not found in: $file"
+    fi
+else
+    log_error "Error: Insufficient arguments."
     show_help
-    exit 0
-fi
-
-# Log errors to errors.log and also display them
-exec 2> errors.log
-
-# If no arguments, print usage
-if [ "$#" -eq 0 ]; then
-    echo "Usage: $0 [-d directory] [-k keyword] [-f file]" >&2
     exit 1
 fi
-
-# Perform input validation
-validate_inputs
-
-# Search for the keyword in the directory recursively
-if [ -n "$directory" ]; then
-    echo "Searching in directory '$directory' for keyword '$keyword'..."
-    search_files "$directory" "$keyword"
-fi
-
-# Search for the keyword in a specific file
-if [ -n "$file" ]; then
-    echo "Searching in file '$file' for keyword '$keyword'..."
-    if grep -q "$keyword" "$file"; then
-        echo "Found '$keyword' in $file"
-    else
-        echo "No matches found for '$keyword' in $file"
-    fi
-fi
-
-# Print script name and arguments
-echo "Script name: $0"
-echo "Total arguments passed: $#"
-echo "Arguments: $@"
-
-# Check the exit status of the last command executed
-if [ $? -ne 0 ]; then
-    echo "An error occurred. Check errors.log for more details."
-else
-    echo "Operation completed successfully."
-fi
+echo "Script executed successfully."
