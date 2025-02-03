@@ -28,16 +28,16 @@ wlan_sub_type=""
 while IFS= read -r line; do
     case "$line" in
         *"frame.time"*)
-            [[ "$line" != *"frame.time_"* ]] && frame_time=$(echo "$line" | cut -d':' -f2- | xargs)
+            [[ "$line" != *"frame.time_"* ]] && frame_time=$(echo "$line" | cut -d':' -f2- | xargs | sed 's/,$//')
             ;;
         *"wlan.fc.type"*)
-            [[ "$line" != *"wlan.fc.type_"* ]] && wlan_type=$(echo "$line" | cut -d':' -f2- | xargs)
+            [[ "$line" != *"wlan.fc.type_"* ]] && wlan_type=$(echo "$line" | cut -d':' -f2- | xargs | sed 's/,$//')
             ;;
         *"wlan.fc.subtype"*)
-            [[ "$line" != *"wlan.fc.subtype_"* ]] && wlan_sub_type=$(echo "$line" | cut -d':' -f2- | xargs)
+            [[ "$line" != *"wlan.fc.subtype_"* ]] && wlan_sub_type=$(echo "$line" | cut -d':' -f2- | xargs | sed 's/,$//')
             ;;
     esac
-    # If all values are found, write to output with proper formatting and reset
+    # If all values are found, write to output and reset
     if [[ -n "$frame_time" && -n "$wlan_type" && -n "$wlan_sub_type" ]]; then
         echo "\"frame.time\": \"$frame_time\"," >> "$output"
         echo "\"wlan.fc.type\": \"$wlan_type\"," >> "$output"
@@ -59,16 +59,16 @@ chmod +x extract.sh
 ### 4) Output
 The output will be saved in the output.txt file and each frame's data will be formatted as follows:
 ```
-"frame.time": "Dec 31 2024 12:50:25.890970000 India Standard Time"
-"wlan.fc.type": "0"
-"wlan.fc.subtype": "8"
+"frame.time": "Dec 31, 2024 12:50:25.890970000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
 
-"frame.time": "Dec 31 2024 12:50:25.892357000 India Standard Time"
-"wlan.fc.type": "0"
-"wlan.fc.subtype": "8"
+"frame.time": "Dec 31, 2024 12:50:25.892357000 India Standard Time",
+"wlan.fc.type": "0",
+"wlan.fc.subtype": "8",
 
 ```
 ### 5) Screenshot:
-![image](https://github.com/user-attachments/assets/92e0f172-36d4-48d9-8f5f-85b22f19e9cf)
+![image](https://github.com/user-attachments/assets/80435eb6-5d98-4bc3-898b-977f32eec499)
 
 
