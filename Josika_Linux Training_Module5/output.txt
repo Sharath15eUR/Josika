@@ -1,0 +1,35 @@
+1) Recursively search a directory for a keyword
+[21bcs010@mepcolinux mod5]$./file_analyzer.sh -d ~/eUR -k localhost
+Keyword 'localhost' found in: /run/media/root/Data/student/cse/ug/be2021/a/21bcs010/eUR/config.txt
+Keyword 'localhost' found in: /run/media/root/Data/student/cse/ug/be2021/a/21bcs010/eUR/mod2full.txt
+Script executed successfully.
+
+2) Search for a keyword in a file
+[21bcs010@mepcolinux mod5]$./file_analyzer.sh -f ~/eUR/config.txt -k port
+Keyword 'port' found in: /run/media/root/Data/student/cse/ug/be2021/a/21bcs010/eUR/config.txt
+Script executed successfully.
+
+3) Display the help menu
+[21bcs010@mepcolinux mod5]$./file_analyzer.sh --help
+Usage: ./file_analyzer.sh [OPTIONS]
+Options:
+  -d <directory>  Directory to search.
+  -k <keyword>    Keyword to search.
+  -f <file>       File to search directly.
+  --help          Display this help menu.
+
+Example usage:
+# Recursively search a directory for a keyword
+./file_analyzer.sh -d logs -k error
+
+# Search for a keyword in a file
+./file_analyzer.sh -f script.sh -k TODO
+
+# Display the help menu
+./file_analyzer.sh --help
+
+4) Display the log file
+[21bcs010@mepcolinux mod5]$cat errors.log
+Error: File or directory '/eUR' does not exist.
+Error: File or directory 'eUR' does not exist.
+Error: Insufficient arguments.
