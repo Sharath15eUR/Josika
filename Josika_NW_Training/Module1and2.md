@@ -12,7 +12,7 @@ scp -r "C:\Users\admin\Downloads\demo" 21bcs010@172.16.16.200:~
 * 21bcs010@172.16.16.200:~ : Destination machine with username and IP address
   
 ##### **Execution :**
-![image](https://github.com/user-attachments/assets/f4347797-cc23-4eb8-8cf8-a5e9c0938148)
+![1](https://github.com/user-attachments/assets/e8a789e4-5185-4aac-8342-c6d29b333663)
 
 
 #### **ii) Copying a Folder Locally Using cp**
@@ -27,7 +27,7 @@ cp -r 1yr/sem1/c eUR/clg
 * eUR/clg : Destination directory
   
 ##### **Execution :**
-![image](https://github.com/user-attachments/assets/d937be42-7ccd-4ddd-a23a-a19a121fd004)
+![2](https://github.com/user-attachments/assets/88c8d38b-ac26-4275-9bab-c7773174a4d8)
 
 ### **2)Host a FTP and SFTP server and try PUT and GET operations**
 i)Installing and Starting FTP Server
@@ -64,21 +64,20 @@ Wireshark is a GUI used to capture,filter and analyze network packets
 ```bash
 icmp
 ```
-![image](https://github.com/user-attachments/assets/2ee19c08-8383-40ea-aa15-734d9d932d9c)
+![3](https://github.com/user-attachments/assets/4c04c008-4092-491f-a861-928ef18218e8)
 
 
 #### **ii) Capturing only HTTP and DNS traffic**
 ```bash
 tcp.port == 80||udp.port == 53
 ```
-![image](https://github.com/user-attachments/assets/ac591873-7074-4fe1-a143-a60c5a4090d7)
-
+![4](https://github.com/user-attachments/assets/060957b2-3f2b-43f9-a6af-ee2de91ea470)
 
 #### **iii) Displaying packets of a specific IP** 
 ```bash
 ip.addr == 172.16.3.40
 ```
-![image](https://github.com/user-attachments/assets/942ea6e6-5fc8-47f1-ac29-945bb8143103)
+![5](https://github.com/user-attachments/assets/791244c3-1339-4146-9dd5-e9ea0f510f67)
 
 
 ### **4)Understand linux utility commands like - ping, arp (Understand each params from ifconfig output)**
@@ -89,7 +88,7 @@ ping -c 4 8.8.8.8
 ```
 Sends 4 packets to Google to check if it's reachable 
 ##### **Execution :**
-![image](https://github.com/user-attachments/assets/ccfd2c79-53ec-411c-b84f-e129c81b1e57)
+![6](https://github.com/user-attachments/assets/b9c3aac1-3190-48f4-aa2e-eac2e806d94f)
 
 
 #### **ii) arp** 
@@ -101,7 +100,7 @@ arp -a
 ```
 
 ##### **Execution :**
-![image](https://github.com/user-attachments/assets/9dea69f9-ae3b-49b5-82a0-a83153176743)
+![7](https://github.com/user-attachments/assets/6ddb213b-e82d-4b96-80dd-941d52e91238)
 
 
 #### **iii) ifconfig - Display Network Interfaces**
@@ -111,7 +110,7 @@ arp -a
 ip a
 ```  
 ##### **Execution :**
-![image](https://github.com/user-attachments/assets/b257ddad-bf53-426e-95c2-ddd1b33738c9)
+![8](https://github.com/user-attachments/assets/bc448895-7289-4365-bb89-ece0092025bb)
 
 
 ### **5)Understand what happens when duplicate IPs configured in a network**
@@ -189,7 +188,7 @@ ping <gateway-IP>
 ```
 
 ##### **Execution :**
-![image](https://github.com/user-attachments/assets/09c8bf04-d65a-4b28-9ab0-da4974b49d7c)
+![9](https://github.com/user-attachments/assets/5c8b09fc-eef4-4455-a750-a59659c66b00)
 
 ### **8)Check iwconfig/ifconfig to understand in detail about network interfaces (check about interface speed, MTU and other parameters)**
 
@@ -230,10 +229,9 @@ ethtool eth0
 * Look for Connected Devices, DHCP Client List, LAN Status which show all devices connected via Wi-Fi and Ethernet, along with their IP and MAC addresses
 
 #### **Execution :**
-![image](https://github.com/user-attachments/assets/ed97b0f1-bec6-42f7-a93b-b27cd7e88faa)
+![10](https://github.com/user-attachments/assets/f84b03df-097c-4829-ac08-0ee4c1eca1ed)
+![11](https://github.com/user-attachments/assets/16eda74b-0d05-4d04-ab84-1ed0a39234cd)
 
-
-![image](https://github.com/user-attachments/assets/62596490-e4a3-4c62-9455-5c0ad1daccbb)
 
 ### **10)Explain how a DHCP server assigns IP addresses to devices in your network**
 A DHCP (Dynamic Host Configuration Protocol) Server dynamically assigns IP addresses to devices in a network, ensuring efficient and automated IP management
@@ -256,7 +254,7 @@ SSH (Secure Shell) connects securely to a remote machine using encryption, typic
 ssh <username>@<IP_Address>
 ```
 ##### **Execution :**
-![image](https://github.com/user-attachments/assets/0179be16-c55d-49ee-8e69-c5f557558807)
+![12](https://github.com/user-attachments/assets/098769a8-03e5-40f7-8a53-3feb76be408d)
 
 #### **ii) Connecting via Telnet :**
 Telnet is an unencrypted protocol used for remote access, typically over port 23. It is less secure and not recommended for sensitive operations
