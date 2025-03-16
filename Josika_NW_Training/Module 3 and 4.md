@@ -63,3 +63,36 @@ Step 5: Capture and Analyze Packets Using Simulation Mode
 ![image](https://github.com/user-attachments/assets/6f5cb9df-ca34-44b8-af0c-6701990d29c1)
 ![image](https://github.com/user-attachments/assets/d65a90e4-dbb0-49e8-8520-4c775c58f73a)
 
+### **2) Capture and analyze Ethernet frames using Wireshark. Inspect the structure of the frame, including destination and source MAC addresses, Ethertype, payload, and FCS. Use GNS3 or Packet Tracer to simulate network traffic**
+#### 2.1) Steps to Capture and Analyze Ethernet Frames Using Wireshark
+- Start Wireshark
+- Start Packet Capture
+- Generate Network Traffic
+  - Open a Command Prompt (Windows)
+  - Run the ping command to generate traffic (creates ICMP packets, which travel over Ethernet)
+![image](https://github.com/user-attachments/assets/f8b7f781-a518-44e4-8abc-927448c869d3)
+- Filter Captured Packets
+![image](https://github.com/user-attachments/assets/201f561c-1672-4f73-9af8-e3c7f896c8b1)
+- Analyze an Ethernet Frame
+  - Click on a captured ICMP packet
+      - Expand the Ethernet II section to inspect:
+         - Destination MAC Address
+         - Source MAC Address
+         - Ethertype (IPv4: 0x0800, ARP: 0x0806)
+         - Payload (ICMP/ARP request data)
+         - FCS (Frame Check Sequence) for error detection
+ ![image](https://github.com/user-attachments/assets/644bea0c-ad6a-4fa2-ad5d-01c6d9324ce8)
+ 
+#### 2.2) Using Packet Tracer
+- Set up a network in Packet Tracer (PCs & switch)
+  ![image](https://github.com/user-attachments/assets/41c4d833-3311-49d1-a217-7347580b6c63)
+- Enable ARP & ICMP filters in Simulation Mode
+- Ping another PC to generate traffic
+  ![image](https://github.com/user-attachments/assets/41216eb6-88d7-4f1a-90c2-ecc7efe688d9)
+- Inspect captured packets → Inbound PDU Details to view:
+  - Source & Destination MAC Addresses
+  - Ethertype (IPv4: 0x0800, ARP: 0x0806)
+  - Payload (ICMP/ARP data)
+  - FCS
+![image](https://github.com/user-attachments/assets/b59f1311-fe12-48e2-86c5-234e72778d58)
+![image](https://github.com/user-attachments/assets/2e5e9f7d-6f39-4070-934d-d9ee3edde7f0)
