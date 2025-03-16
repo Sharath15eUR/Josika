@@ -96,7 +96,7 @@ Step 5: Capture and Analyze Packets Using Simulation Mode
   - FCS
 ![image](https://github.com/user-attachments/assets/b59f1311-fe12-48e2-86c5-234e72778d58)
 ![image](https://github.com/user-attachments/assets/2e5e9f7d-6f39-4070-934d-d9ee3edde7f0)
-### **3)Configure static IP addresses, modify MAC addresses, and verify network connectivity using ping and ifconfig commands**
+### **3) Configure static IP addresses, modify MAC addresses, and verify network connectivity using ping and ifconfig commands**
   - 1) Set a Static IP Address:
 ```bash
 sudo ifconfig eth0 192.168.1.100 netmask 255.255.255.0 up
@@ -133,7 +133,7 @@ ping 192.168.1.1
 ![image](https://github.com/user-attachments/assets/418e40bf-d738-4c44-a9bd-031aec2b780f)
 This shows the path the packet takes
 
-### **5)Create a simple LAN setup with two Linux machines connected via a switch**
+### **5) Create a simple LAN setup with two Linux machines connected via a switch**
 Setting up a simple LAN in Packet Tracer with two Linux PCs connected via a switch
 ![image](https://github.com/user-attachments/assets/3889ca6e-0556-475b-ab67-8165e44edc97)
 
@@ -143,4 +143,110 @@ Setting up a simple LAN in Packet Tracer with two Linux PCs connected via a swit
   - Verified connectivity using ping
     ![image](https://github.com/user-attachments/assets/66d6c13b-3a6f-4033-9929-dbf4bd55f421)
   - Result: Successful LAN communication
+### **6) Ping from one machine to the other. If it fails, use ifconfig to ensure the IP addresses are configured correctly**
+  - i) Ping the Other Machine:
+      - On PC0, run :
+    ```bash
+    ping 192.168.1.20
+    ```
+      - If ping fails, proceed to check network settings
+  - ii) Verify IP Configuration:
+      - Check if the IP addresses are set correctly on both machines:
+    ```bash
+    ping 192.168.1.20
+    ```
+      - Ensure both PCs have:
+        - Unique IPs (e.g., 192.168.1.10 & 192.168.1.20)
+        - Same subnet mask (255.255.255.0)
+  - iii) Check Network Connection:
+          Ensure both PCs are properly connected to the switch using straight-through cables
+  - iv) Enable Network Interface (if down):
+    ```bash
+    sudo ifconfig eth0 up
+    ```    
+  - v) Retry Ping
+        If successful, the network is working
+### **7) Use traceroute to identify where the packets are being dropped if the ping fails**
+![image](https://github.com/user-attachments/assets/62a3eee6-0b79-426f-af2c-7063e8a91e3b)
+  - Step 1: Run traceroute from PC0(192.168.1.10) to PC1(192.168.1.20):
+![image](https://github.com/user-attachments/assets/818dbce1-d2b8-41ea-9118-b103c72ccbbd)
+  - Step 2: Check Output:
+      - If only one hop appears, the devices are directly connected
+      - If * * * appears, packets are dropping at that point (Verify IP settings/check cables/ensure network interfaces are up)
+### **8) Research the Linux kernel's handling of Ethernet devices and network interfaces. Write a short report on how the Linux kernel supports Ethernet communication**
 
+The Linux kernel provides robust support for Ethernet communication by managing network interfaces, handling packet transmission, and implementing key networking protocols. The kernel interacts with Ethernet devices through a layered networking stack, ensuring efficient data transfer and connectivity.
+
+
+1) Network Interface Management
+   The Linux kernel recognizes Ethernet devices as network interfaces (e.g., eth0, eth1). These interfaces are controlled using kernel modules such as e1000, r8169, or other driver-specific modules that enable communication with the hardware. The ip link and ifconfig commands allow users to view and configure network interfaces.
+
+2) Packet Transmission and Reception
+   Ethernet frames are processed by the kernel’s Network Stack, which includes the following layers:
+   - Device Drivers: Manage the Ethernet hardware and enable communication.
+   - Network Layer: Routes packets based on IP addresses.
+   - Transport Layer: Ensures reliable communication (e.g., TCP, UDP).
+   The kernel uses sk_buff (socket buffers) to manage network packets, storing metadata and payloads efficiently.
+
+3) MAC Address Handling
+   Each Ethernet device has a unique MAC address, which is managed by the kernel and can be modified using:
+   ```bash
+   ip link set eth0 address XX:XX:XX:XX:XX:XX
+   ```
+   The kernel maintains a MAC address table to facilitate communication within a local network.
+
+4) Ethernet Frame Processing
+   The Linux kernel processes Ethernet frames, which consist of:
+   - Source & Destination MAC Addresses
+   - EtherType (identifying the protocol, e.g., IPv4, ARP)
+   - Payload (data being transmitted)
+   - Frame Check Sequence (FCS) for error detection.
+
+5) Kernel Networking APIs and Modules
+   The kernel includes APIs such as netdev_ops and modules like netfilter for packet filtering and forwarding. The bridge module (brctl or ip link add br0) enables Layer 2 networking for bridging connections.
+
+### **9) Describe how you would configure a basic LAN interface using the ip command in Linux  **
+## Steps to Configure a LAN Interface
+
+### 1. Check Existing Network Interfaces
+```bash
+ip addr show
+```
+This command lists all available network interfaces and their current configurations
+
+### 2. Assign an IP Address
+```bash
+sudo ip addr add 192.168.1.100/24 dev eth0
+```
+This assigns the IP address `192.168.1.100` with a subnet mask of `255.255.255.0` (`/24`) to the `eth0` interface
+
+### 3. Bring the Interface Up
+```bash
+sudo ip link set eth0 up
+```
+This activates the `eth0` interface
+
+### 4. Set the Default Gateway
+```bash
+sudo ip route add default via 192.168.1.1
+```
+This configures the default gateway as `192.168.1.1`
+
+### 5. Verify Configuration
+```bash
+ip addr show eth0
+ip route show
+```
+These commands check the assigned IP address and routing table to confirm the configuration
+
+### **10) Use Linux to view the MAC address table of a switch (if using a Linux-based network switch). Use the bridge or ip link commands to inspect the MAC table and demonstrate a basic switch's operation**
+1) Using the bridge command:
+   ```bash
+   bridge fdb show
+   ```
+2) Using the ip link command:
+   ```bash
+   ip link show
+   ```
+  
+    
