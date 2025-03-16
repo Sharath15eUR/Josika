@@ -96,3 +96,51 @@ Step 5: Capture and Analyze Packets Using Simulation Mode
   - FCS
 ![image](https://github.com/user-attachments/assets/b59f1311-fe12-48e2-86c5-234e72778d58)
 ![image](https://github.com/user-attachments/assets/2e5e9f7d-6f39-4070-934d-d9ee3edde7f0)
+### **3)Configure static IP addresses, modify MAC addresses, and verify network connectivity using ping and ifconfig commands**
+  - 1) Set a Static IP Address:
+```bash
+sudo ifconfig eth0 192.168.1.100 netmask 255.255.255.0 up
+```
+  - 2) Change MAC Address:
+```bash
+sudo ifconfig eth0 down  
+sudo ifconfig eth0 hw ether 00:11:22:33:44:55  
+sudo ifconfig eth0 up
+```
+  - 3) Verify Changes:
+```bash
+ifconfig eth0
+```
+  - 4) Check Network Connectivity:
+```bash
+ping 192.168.1.1
+```
+### **4) Troubleshoot Ethernet Communication with ping and traceroute  -> Using cisco packet tracer**
+  - Open Cisco Packet Tracer
+  - Create a Network Topology ( 1 Switch and 2 PCs )
+  ![image](https://github.com/user-attachments/assets/b04edaeb-a11e-465a-873c-60a9a7997196)
+  - Assign IP Addresses
+     - 1.	Click on PC0 → Go to Desktop → Open IP Configuration
+          o	IP Address: 192.168.1.1
+         	o	Subnet Mask: 255.255.255.0
+     - 2. Click on PC1 → Go to Desktop → Open IP Configuration
+          o	IP Address: 192.168.1.2
+          o	Subnet Mask: 255.255.255.0
+  - Test Connectivity with ping
+  ![image](https://github.com/user-attachments/assets/64b22ba5-2206-413b-89fe-47f905fdbc57)
+
+  - Use traceroute to Identify Issues
+![image](https://github.com/user-attachments/assets/418e40bf-d738-4c44-a9bd-031aec2b780f)
+This shows the path the packet takes
+
+### **5)Create a simple LAN setup with two Linux machines connected via a switch**
+Setting up a simple LAN in Packet Tracer with two Linux PCs connected via a switch
+![image](https://github.com/user-attachments/assets/3889ca6e-0556-475b-ab67-8165e44edc97)
+
+  - Configured static IPs (192.168.1.10 & 192.168.1.20)
+   ![image](https://github.com/user-attachments/assets/1717257e-035b-4b0c-95b2-ce52fe842d59)
+   ![image](https://github.com/user-attachments/assets/b4de5745-27fa-4ce3-b8c4-f6ffa4608fd7)
+  - Verified connectivity using ping
+    ![image](https://github.com/user-attachments/assets/66d6c13b-3a6f-4033-9929-dbf4bd55f421)
+  - Result: Successful LAN communication
+
