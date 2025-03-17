@@ -93,8 +93,73 @@ traceroute 192.168.1.1
 
 ### **4) You are given three IP addresses: 192.168.10.5, 172.20.15.1, and 8.8.8.8. Identify the class of each IP address.Determine if it is private or public.Explain how NAT would handle a private IP when accessing the internet**
 
+#### **Class and Private/Public Identification of Given IP Addresses**
 
+1. **192.168.10.5**  
+   - **Class:** **C** (Range: `192.0.0.0` - `223.255.255.255`)  
+   - **Private/Public:** **Private** (192.168.x.x is reserved for private networks)  
+
+2. **172.20.15.1**  
+   - **Class:** **B** (Range: `128.0.0.0` - `191.255.255.255`)  
+   - **Private/Public:** **Private** (172.16.0.0 – 172.31.255.255 is reserved for private networks)  
+
+3. **8.8.8.8**  
+   - **Class:** **A** (Range: `1.0.0.0` - `126.255.255.255`)  
+   - **Private/Public:** **Public** (Google's Public DNS)  
+
+#### **How NAT Handles Private IPs for Internet Access**
+- **Network Address Translation (NAT)** is used to allow devices with private IP addresses to access the **public internet**.
+- **Steps:**
+  1. A device with a **private IP (e.g., 192.168.10.5)** sends a request to the internet.
+  2. The router (NAT device) **replaces** the private IP with a **public IP** (assigned by the ISP).
+  3. The request is sent to the destination (e.g., a web server).
+  4. The web server responds to the public IP.
+  5. The router **maps the response** back to the private IP and delivers it to the requesting device.
 
 
 
 ### **5) In Cisco Packet Tracer, configure NAT on a router to allow internal devices (192.168.1.x) to access the internet.Test connectivity by pinging an external public IP.Capture the traffic in Wireshark and analyze the source IP before and after NAT translation**
+
+#### **Configure NAT in Packet Tracer & Capture Traffic in Wireshark**  
+
+#### **1️) Setup Router Interfaces**  
+```bash
+interface GigabitEthernet0/0
+ip address 192.168.1.1 255.255.255.0
+ip nat inside
+no shutdown
+exit
+
+interface GigabitEthernet0/1
+ip address 200.200.200.1 255.255.255.0
+ip nat outside
+no shutdown
+exit
+```
+
+#### **2️) Configure NAT Overload (PAT)**
+```bash
+access-list 1 permit 192.168.1.0 0.0.0.255
+ip nat inside source list 1 interface GigabitEthernet0/1 overload
+```
+
+#### **3️) Assign IP to PC (Example: PC0)**
+- **IP:** `192.168.1.2`
+- **Gateway:** `192.168.1.1`
+
+#### **4️) Test Connectivity**
+- On **PC0**, ping:  
+  ```bash
+  ping 8.8.8.8
+  ```
+
+- On **Router**, check:  
+  ```bash
+  show ip nat translations
+  ```
+
+#### **5️) Capture Traffic in Wireshark**
+- Start **Packet Capture** on `GigabitEthernet0/1` (WAN)
+- **Ping again** and analyze source IP change  
+
+
