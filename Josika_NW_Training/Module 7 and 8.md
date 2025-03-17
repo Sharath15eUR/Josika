@@ -23,5 +23,8 @@
    - TCP/UDP (Ports, Flags, Checksums)
      ![image](https://github.com/user-attachments/assets/47bb4d00-a274-4031-ac40-a2bd8945f176)
   
+### **3) Explore traceroute/tracert for different websites eg:google.com and analyse the parameters in the output and explore different options for traceroute command**
+![image](https://github.com/user-attachments/assets/a9741b1f-81c8-49c6-b5bf-a0af6641a250)
 
+### **4) 
 
