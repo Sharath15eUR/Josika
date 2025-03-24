@@ -22,6 +22,41 @@ Wi-Fi operates at both **Layer 1 (Physical Layer)** and **Layer 2 (Data Link Lay
 
 ### **2. Day-to-Day Wi-Fi Devices & Their Wireless Capabilities** 
 
+
+The **Wi-Fi devices** that I use daily along with their wireless properties and generations 
+
+#### **1. Smartphone – Oppo F25**  
+- **Wi-Fi Generation:** **Wi-Fi 5 (802.11ac)**  
+- **Maximum Speed:** **Up to 3.5 Gbps**  
+- **Frequency Bands:** **2.4 GHz & 5 GHz**  
+- **MIMO Support:** **Yes** (better speed & stability)  
+- **Use Case:** Browsing, streaming, gaming, video calls  
+
+#### **2. Laptop – HP**  
+*(Wi-Fi version depends on the model, but generally HP laptops support Wi-Fi 5 or Wi-Fi 6)*  
+
+- **Wi-Fi Generation:** **Wi-Fi 5 (802.11ac) or Wi-Fi 6 (802.11ax)**  
+- **Maximum Speed:** **Up to 9.6 Gbps (Wi-Fi 6)**  
+- **Frequency Bands:** **2.4 GHz, 5 GHz, (6 GHz for Wi-Fi 6E models)**  
+- **MIMO Support:** **Yes**  
+- **Use Case:** Online work, video conferencing, coding, gaming  
+
+#### **3. Router – Jio (JioFiber Wi-Fi Router)**  
+- **Wi-Fi Generation:** **Wi-Fi 5 (802.11ac) or Wi-Fi 6 (802.11ax) (Depends on the model)**  
+- **Maximum Speed:** **Up to 1 Gbps (JioFiber plans)**  
+- **Frequency Bands:** **Dual-band (2.4 GHz & 5 GHz)**  
+- **MIMO Support:** **Yes** (Allows multiple devices to connect efficiently)  
+- **Use Case:** Home internet, multiple device connectivity, gaming, streaming  
+
+#### **Matching Devices to Wi-Fi Generations**  
+
+| **Device**          | **Wi-Fi Generation** | **Max Speed** | **Frequency Bands** |
+|--------------------|-------------------|-------------|----------------|
+| **Oppo F25**       | Wi-Fi 5 (802.11ac) | Up to 3.5 Gbps | 2.4 GHz, 5 GHz |
+| **HP Laptop**      | Wi-Fi 5 / Wi-Fi 6  | Up to 9.6 Gbps | 2.4 GHz, 5 GHz, (6 GHz for Wi-Fi 6E) |
+| **Jio Router**     | Wi-Fi 5 / Wi-Fi 6  | Up to 1 Gbps (depends on ISP) | 2.4 GHz, 5 GHz |
+
+
 ### **3. What is BSS and ESS?**
 - **BSS (Basic Service Set)**: A single access point (AP) with associated devices forming a small Wi-Fi network 
   Example: Home Wi-Fi router and connected devices  
@@ -78,3 +113,25 @@ Backhaul is the connection between Access Points (APs) and the Internet
 - **Secure** – Less interference
 
 ### **10. List down the Wi-Fi topologies and use cases of each one**
+#### **Wi-Fi Topologies and Their Use Cases**  
+
+1. **Infrastructure Mode**  
+   - **Use Case:** Common in homes, offices, and public Wi-Fi networks 
+   - **Description:** Devices connect to a central Wi-Fi router or access point (AP) for internet access
+
+2. **Ad-hoc Mode (Peer-to-Peer)**  
+   - **Use Case:** Temporary networks, file sharing, or device-to-device communication without a router 
+   - **Description:** Devices connect directly to each other without an access point
+
+3. **Mesh Network**  
+   - **Use Case:** Large homes, campuses, smart cities, and industrial IoT
+   - **Description:** Multiple nodes (APs) work together, providing seamless coverage and self-healing connections  
+
+4. **Wireless Distribution System (WDS)**  
+   - **Use Case:** Extending Wi-Fi coverage without additional cables in businesses and large buildings
+   - **Description:** APs communicate wirelessly to extend the network range 
+
+5. **Hotspot Mode**  
+   - **Use Case:** Public Wi-Fi in cafes, airports, hotels, and mobile networks
+   - **Description:** A device (router or smartphone) shares internet access with others 
+
