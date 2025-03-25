@@ -36,5 +36,5 @@ This folder includes assignments on **Networking**, using:
 
 
 ### **Notes**  
-- The **Linux assignments** require a VM or SSH-enabled Linux server.  
-- The **Networking assignments** may require Cisco Packet Tracer or Wireshark.  
+- The **Linux assignments** require a VM or SSH-enabled Linux server
+- The **Networking assignments** require Cisco Packet Tracer and Wireshark 
