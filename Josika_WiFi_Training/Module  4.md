@@ -1,6 +1,6 @@
 ### 1) What is the significance of MAC layer and in which position it is placed in the OSI model?
 
-The MAC (Medium Access Control) layer is responsible for managing access to the shared wireless medium. It handles addressing, channel access control, collision avoidance, and error detection. It ensures orderly communication among devices and determines when a device can transmit data. The MAC layer resides within the **Data Link Layer (Layer 2)** of the OSI model, just above the Physical Layer.
+The MAC (Medium Access Control) layer is responsible for managing access to the shared wireless medium. It handles addressing, channel access control, collision avoidance, and error detection. It ensures orderly communication among devices and determines when a device can transmit data. The MAC layer resides within the **Data Link Layer (Layer 2)** of the OSI model, just above the Physical Layer
 
 ### 2) Describe the frame format of the 802.11 MAC header and explain the purpose of each field.
 
@@ -43,15 +43,15 @@ Scanning is used by a station (STA) to discover nearby access points (APs):
 - **Passive Scanning:** STA listens for beacon frames on each channel. It consumes less power but takes longer.
 - **Active Scanning:** STA sends probe request frames and waits for probe responses. Faster but consumes more power.
 
-This process helps the STA collect network information like SSID, supported rates, and security features before associating.
+This process helps the STA collect network information like SSID, supported rates, and security features before associating
 
 ### 5) Brief about the client association process.
 
 The association process allows a STA to join a wireless network:
 
-1. After scanning and (if required) authentication, the STA sends an **Association Request** frame.
-2. The AP processes the request and sends back an **Association Response** with an AID (Association ID).
-3. Once associated, the STA can communicate through the AP.
+1. After scanning and (if required) authentication, the STA sends an **Association Request** frame
+2. The AP processes the request and sends back an **Association Response** with an AID (Association ID)
+3. Once associated, the STA can communicate through the AP
 
 ### 6) Explain each step involved in EAPOL 4-way handshake and the purpose of each key derived from the process.
 
