@@ -1,5 +1,3 @@
-
-
 ### 1. What are the different 802.11 PHY layer standards? Compare their characteristics.
 
 | Standard    | Frequency | Max Data Rate | Modulation         | Channel Width | Features                             |
